@@ -1,4 +1,5 @@
 import { Inject, Injectable } from "@nestjs/common";
+import { Op } from "sequelize";
 import { CARTITEM_REPOSITORY } from "src/core/constants";
 import { CartItem } from "./cartItem.entity";
 
@@ -14,6 +15,11 @@ export class cartItemService {
     // To remove cartItem by CartId from CartItem table.
     async removeByCartId(id: number) {
         return await this.cartItemRepository.destroy<CartItem>({ where: { CartId:id}})
+    }
+
+    // To remove cartItems by CartId from CartItem table.
+    async removeByCartIds(CartId) {
+        return await this.cartItemRepository.destroy<CartItem>({ where: { CartId: { [Op.or]: CartId } }})
     }
 
 }

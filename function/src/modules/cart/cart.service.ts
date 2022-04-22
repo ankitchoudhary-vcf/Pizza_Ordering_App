@@ -25,6 +25,16 @@ export class CartService {
 
     // To remove cart by Id from the Cart table.
     async removeById(id: number) {
-        return await this.cartRepository.destroy<Cart>({ where: { id}})
+        return await this.cartRepository.destroy<Cart>({ where: { id}});
+    }
+
+    // To remove cart by UserId from the Cart table.
+    async removeByUserId(userId: number) {
+        return await this.cartRepository.destroy<Cart>({ where: { UserId: userId }});
+    }
+
+    // To find the Id from the Cart by userId.
+    async getCartIdBYUserId(userId: number){
+        return await this.cartRepository.findAll<Cart>({ attributes: ['id'], where: { UserId: userId}});
     }
 }

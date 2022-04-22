@@ -8,6 +8,8 @@ import { AuthModule } from './modules/auth/auth.module';
 import { IngredientsModule } from './modules/ingredients/ingredients.module';
 import { CartModule } from './modules/cart/cart.module';
 import { CartItemModule } from './modules/cartItem/cartItem.module';
+import { OrdersModule } from './modules/orders/orders.module';
+import { OrderItemModule } from './modules/orderItem/orderItem.module';
 
 @Module({
   imports: [
@@ -18,6 +20,8 @@ import { CartItemModule } from './modules/cartItem/cartItem.module';
     IngredientsModule,
     CartModule,
     CartItemModule,
+    OrdersModule,
+    OrderItemModule,
   ],
   controllers: [AppController],
   providers: [AppService],
