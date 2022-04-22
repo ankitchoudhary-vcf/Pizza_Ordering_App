@@ -1,4 +1,4 @@
-// User Data Transfer Object schema.
+// Cart Data Transfer Object schema.
 import { IsNotEmpty } from 'class-validator'
 
 export class CartDto {
