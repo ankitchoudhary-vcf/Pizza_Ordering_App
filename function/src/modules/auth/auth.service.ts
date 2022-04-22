@@ -19,7 +19,7 @@ export class AuthService {
       return null;
     }
 
-    const match = await this.comparePassword(pass, user.password);
+    const match = await this.comparePassword(pass, user.Password);
     if (!match) {
       return null;
     }
@@ -37,8 +37,8 @@ export class AuthService {
   // To register the user. It saves the user information to the database and then returns the token and the user object.
   public async register(user: UserDto) {
 
-    const pass = await this.hashPassword(user.password);
-    const newUser = await this.userService.create({ ...user, password: pass });
+    const pass = await this.hashPassword(user.Password);
+    const newUser = await this.userService.create({ ...user, Password: pass });
     const { password, ...result } = newUser['dataValues'];
     const token = await this.generateToken(result);
 

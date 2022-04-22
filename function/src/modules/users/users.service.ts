@@ -13,8 +13,8 @@ export class UsersService {
     }
 
     // To find a user from the users table by email and return the user.
-    async findOneByEmail(email: string): Promise<Users> {
-        return await this.userRepository.findOne<Users>({ where: { email } });
+    async findOneByEmail(Email: string): Promise<Users> {
+        return await this.userRepository.findOne<Users>({ where: { Email } });
     }
 
     // To find user fro the users table by using the User ID and return the user.

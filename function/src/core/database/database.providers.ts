@@ -1,4 +1,6 @@
 import { Sequelize } from 'sequelize-typescript';
+import { Cart } from 'src/modules/cart/cart.entity';
+import { CartItem } from 'src/modules/cartItem/cartItem.entity';
 import { Ingredients } from 'src/modules/ingredients/ingredients.entity';
 import { Users } from 'src/modules/users/users.entity';
 import { SEQUELIZE, DEVELOPMENT, TEST, PRODUCTION } from '../constants';
@@ -23,7 +25,7 @@ export const databaseProviders = [
           config = databaseConfig.development;
       }
       const sequelize = new Sequelize(config);
-      sequelize.addModels([Users, Ingredients]);
+      sequelize.addModels([Users, Ingredients, Cart, CartItem]);
       await sequelize.sync();
       return sequelize;
     },

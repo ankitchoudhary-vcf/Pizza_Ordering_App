@@ -1,6 +1,6 @@
 // User Database Schema Model
-import { Table, Column, Model, DataType } from 'sequelize-typescript';
-
+import { Table, Column, Model, DataType, HasMany } from 'sequelize-typescript';
+import { Cart } from 'src/modules/cart/cart.entity';
 
 /**
  * @Column decorator provides information about the each column in the table.
@@ -14,7 +14,7 @@ export class Users extends Model<Users> {
         type: DataType.STRING,
         allowNull: false,
     })
-    name: string;
+    Name: string;
 
 
     // Email Column
@@ -23,13 +23,16 @@ export class Users extends Model<Users> {
         unique: true,
         allowNull: false,
     })
-    email: string;
+    Email: string;
 
     // Password Column
     @Column({
         type: DataType.STRING,
         allowNull: false,
     })
-    password: string;
+    Password: string;
+
+    @HasMany(() => Cart)
+    Carts : Cart[];
 
 }
