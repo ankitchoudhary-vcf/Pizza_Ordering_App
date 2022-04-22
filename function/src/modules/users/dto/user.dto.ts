@@ -3,13 +3,13 @@ import { IsEmail, IsNotEmpty, MinLength } from 'class-validator'
 export class UserDto {
 
     @IsNotEmpty()
-    readonly name: string;
+    readonly Name: string;
 
     @IsNotEmpty()
     @IsEmail()
-    readonly email: string;
+    readonly Email: string;
 
     @IsNotEmpty()
     @MinLength(6)
-    readonly password: string;
+    readonly Password: string;
 }
