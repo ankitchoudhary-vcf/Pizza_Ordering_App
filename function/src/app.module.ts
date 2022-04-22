@@ -6,6 +6,8 @@ import { DatabaseModule } from './core/database/database.module';
 import { UsersModule } from './modules/users/users.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { IngredientsModule } from './modules/ingredients/ingredients.module';
+import { CartModule } from './modules/cart/cart.module';
+import { CartItemModule } from './modules/cartItem/cartItem.module';
 
 @Module({
   imports: [
@@ -14,6 +16,8 @@ import { IngredientsModule } from './modules/ingredients/ingredients.module';
     UsersModule,
     AuthModule,
     IngredientsModule,
+    CartModule,
+    CartItemModule,
   ],
   controllers: [AppController],
   providers: [AppService],
