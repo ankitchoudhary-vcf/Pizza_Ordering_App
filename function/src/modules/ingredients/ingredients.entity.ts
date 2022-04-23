@@ -11,13 +11,6 @@ export class Ingredients extends Model<Ingredients> {
     })
     Name: string;
 
-    // IngredientType column
-    @Column({
-        type: DataType.STRING,
-        allowNull: false,
-    })
-    Type: string;
-
     // IngredientPrice column
     @Column({
         type: DataType.FLOAT,

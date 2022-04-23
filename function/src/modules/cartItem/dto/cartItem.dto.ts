@@ -1,7 +1,7 @@
-// User Data Transfer Object schema.
+// CartItem Data Transfer Object schema.
 import { IsNotEmpty } from 'class-validator'
 
-export class CartDto {
+export class CartItemDto {
 
     @IsNotEmpty()
     readonly CartId: number;

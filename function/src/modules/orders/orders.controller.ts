@@ -5,23 +5,22 @@ import { cartItemService } from "../cartItem/cartItem.service";
 import { orderItemService } from "../orderItem/orderItem.service";
 import { OrdersService } from "./orders.service";
 
+// To handle api/orders API.
 @Controller('orders')
 export class OrdersController {
     constructor(private readonly ordersService: OrdersService,  private readonly orderItemService: orderItemService, private readonly cartService: CartService, private readonly cartItemService: cartItemService) {}
 
+    // To fetch Orders from Orders table by user Id
+    @UseGuards(AuthGuard('jwt'))
     @Get('fetch')
-    async getCart() {
-        return await this.ordersService.getData();
+    async fetchOrder(@Request() req) {
+        return await this.ordersService.fetch(req.user.id);
     }
 
-    @Get('fetch/:id')
-    async fetchCart(@Param('id') id: number) {
-        return await this.ordersService.fetch(id);
-    }
-
+    // To add new order
     @UseGuards(AuthGuard('jwt'))
     @Post('add')
-    async addCart(@Body()  data , @Request() req) {
+    async addOrder(@Body()  data , @Request() req) {
         const res = await this.ordersService.create(data, req.user.id);
         const OrderItems = data.OrderItem.map( Item => (
             {
@@ -40,6 +39,7 @@ export class OrdersController {
     }
 
 
+    // To remove all orders and orderItems
     @Get('remove')
     async removeAll(){
         return [await this.orderItemService.removeAll(), await this.ordersService.removeAll()]

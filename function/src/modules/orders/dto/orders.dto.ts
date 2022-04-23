@@ -5,4 +5,4 @@ export class OrdersDto {
 
     @IsNotEmpty()
     readonly Price: number;
-}
+}   

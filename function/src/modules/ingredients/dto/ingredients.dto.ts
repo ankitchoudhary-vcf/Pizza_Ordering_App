@@ -7,9 +7,6 @@ export class IngredientsDto {
     readonly Name: string;
 
     @IsNotEmpty()
-    readonly Type: string;
-
-    @IsNotEmpty()
     readonly Price: number;
 
     @IsNotEmpty()
