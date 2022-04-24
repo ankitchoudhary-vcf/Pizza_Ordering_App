@@ -1,0 +1,36 @@
+.checkoutProduct {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    position: relative;
+    cursor: pointer;
+    text-align: left;
+}
+
+.checkoutProduct_image {
+    object-fit: contain;
+    width: 180px;
+    height: 180px;
+}
+
+.checkout_ingredients {
+    position: absolute;
+    object-fit: contain;
+    width: 190px;
+    height: 135px;
+}
+
+.checkoutProduct_info {
+    padding-left: 20px;
+}
+
+.checkoutProduct_title {
+    font-size:18px;
+    font-weight: 800
+}
+
+.checkoutProduct:hover {
+    box-shadow: 0px 5px 17px -3px rgba(0, 0, 0, 0.75);
+}
