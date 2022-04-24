@@ -25,7 +25,7 @@ export class CartController {
                 "IngredientId": Item.IngredientId,
                 "CartId": res.id
             }
-        ))        
+        ))          
         CartItems.forEach(async (item) => {
             return await this.cartItemService.create(item) 
         })

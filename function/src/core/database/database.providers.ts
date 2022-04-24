@@ -29,7 +29,7 @@ export const databaseProviders = [
       }
       const sequelize = new Sequelize(config);
       sequelize.addModels([Users, Ingredients, Cart, CartItem, Orders, OrderItem, Size]);
-      await sequelize.sync({force: true});
+      await sequelize.sync();
       return sequelize;
     },
   },
