@@ -19,7 +19,6 @@ const SignIn = () => {
       axiosConfig
       .post(`/api/auth/login`, {username: username, password: password})
       .then((response) => {
-          console.log(response.data);
         dispatch({
             type: "SET_USER",
             user: response.data
