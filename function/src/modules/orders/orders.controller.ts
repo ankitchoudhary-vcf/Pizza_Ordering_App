@@ -22,14 +22,15 @@ export class OrdersController {
     @Post('add')
     async addOrder(@Body()  data , @Request() req) {
         const res = await this.ordersService.create(data, req.user.id);
-        const OrderItems = data.OrderItem.map( Item => (
+        const OrderItems = data.OrderItem.map( Item =>  (
             {
-                "IngredientId": Item.IngredientId,
+                "Basket": Item,
                 "OrderId": res.id
             }
-        ))        
+        ))
+
         OrderItems.forEach(async (item) => {
-            return await this.orderItemService.create(item) 
+            return await this.orderItemService.create(item)
         })
         const CartId = this.cartService.getCartIdBYUserId(req.user.id);
         await this.cartItemService.removeByCartIds((await CartId).map( Item => Item.id))
