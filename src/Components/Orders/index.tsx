@@ -18,9 +18,6 @@ const Orders = () => {
         .get(`/api/orders/fetch/`)
         .then((response: any) => {
           setOrders(response.data)
-          dispatch({
-            type: "EMPTY_CART"
-          })
         })
         .catch((err: any) => {
           showToast("danger", dispatch, {
