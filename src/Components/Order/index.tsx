@@ -10,7 +10,9 @@ const Order = ({ order }: any) => {
       <p className="order_id">
         <small>{order.id}</small>
       </p>
-      <CheckoutProduct data={order} isOrdered={true} />
+      {order.OrderItem.map((order:any, index:any) => (
+        <CheckoutProduct key={index+"_OrderedItems"} data={order} isOrdered={true} />
+      ))}
       <h3>Order Total: {order.Price}</h3>
     </div>
   );
