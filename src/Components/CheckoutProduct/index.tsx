@@ -22,7 +22,7 @@ const CheckoutProduct = ({ data, isOrdered }: Props) => {
       />
 
       {isOrdered
-        ? data.OrderItem.map((item: any) =>
+        ? data.Basket.CartItems.map((item: any) =>
             state?.ingredients.map(
               (ingredient: any) =>
                 ingredient.id === item.IngredientId && (
@@ -51,7 +51,7 @@ const CheckoutProduct = ({ data, isOrdered }: Props) => {
         <p className="checkoutProduct_price">
           <strong>Amount : </strong>
           <small>₹</small>
-          <strong>{data.Price}</strong>
+          <strong>{isOrdered?data.Basket.Price:data.Price}</strong>
         </p>
       </div>
     </div>
