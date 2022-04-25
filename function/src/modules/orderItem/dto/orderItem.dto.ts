@@ -7,5 +7,8 @@ export class OrderItemDto {
     readonly OrderId: number;
 
     @IsNotEmpty()
-    readonly IngredientId: number;
+    readonly Basket: JSON;
+    
+    // @IsNotEmpty()
+    // readonly IngredientId: number;
 }
