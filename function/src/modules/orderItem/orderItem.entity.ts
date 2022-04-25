@@ -12,16 +12,22 @@ export class OrderItem extends Model<OrderItem> {
     })
     OrderId: number;
 
-    @ForeignKey(() => Ingredients)
+    // @ForeignKey(() => Ingredients)
+    // @Column({
+    //     type: DataType.INTEGER,
+    //     allowNull: false,
+    // })
+    // IngredientId: number;
+
     @Column({
-        type: DataType.INTEGER,
+        type: DataType.JSONB,
         allowNull: false,
     })
-    IngredientId: number;
+    Basket : JSON;
 
     @BelongsTo(() => Orders)
     Order: Orders;
     
-    @BelongsTo(() => Ingredients)
-    Ingredient: Ingredients;
+    // @BelongsTo(() => Ingredients)
+    // Ingredient: Ingredients;
 }
