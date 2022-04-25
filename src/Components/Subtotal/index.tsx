@@ -24,39 +24,33 @@ const Subtotal = () => {
         return Promise.reject(error);
       }
     );
-    var err = false;
 
-    state.basket.map(async (item: any) => {
-      const orderItems = {
-        Price: item.Price,
-        OrderItem: item.CartItems.map((item: any) => ({
-          IngredientId: item.IngredientId,
-        })),
-      };
+    const orderItems = {
+      Price: getBasketTotal(state.basket),
+      OrderItem: state.basket.map((item: any) => ({
+        "Price": item.Price,
+        "CartItems": item.CartItems,
+      })),
+    };
 
-      await axiosConfig
-        .post(`/api/orders/add`, orderItems)
-        .then((response) => {
-        //   console.log(response);
-        })
-        .catch((error) => {
-            err = error.message;
-        });
-    });
-
-    if(err){
-        showToast('warning', dispatch, {
-            title: err,
-            image: warning,
-          })
-    }
-    else{
+    axiosConfig
+      .post(`/api/orders/add`, orderItems)
+      .then((response) => {
         showToast('success', dispatch, {
-            title: "Order Placed Successfully",
-            image: success,
-          })
-          navigate('/orders');
-    }
+          title: "Order Placed Successfully",
+          image: success,
+        })
+        dispatch({
+          type: "EMPTY_CART"
+        })
+        navigate('/orders');
+      })
+      .catch((error) => {
+        showToast('warning', dispatch, {
+          title: error.message,
+          image: warning,
+        })
+      });
 
   };
 
