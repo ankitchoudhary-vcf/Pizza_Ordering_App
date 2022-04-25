@@ -75,7 +75,7 @@ const SignUp = () => {
           />
 
           <button type="submit" className="SignUp_signInButton" onClick={signUp}>
-            Sign In
+            Sign Up
           </button>
         </form>
 
