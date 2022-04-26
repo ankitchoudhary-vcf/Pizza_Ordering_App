@@ -1,0 +1,39 @@
+version: "3.8"
+services:
+
+  pizzastore-postgres:
+    image: postgres
+    container_name: pizzastore-postgres
+    volumes:
+      - pizzastore-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=pizzastore
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  pizzastore-app:
+    build: ./function
+    container_name: pizzastore-app
+    environment:
+      - DB_SERVER=pizzastore-postgres
+      - POSTGRES_DB=pizzastore
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 8080:8080
+    links:
+      - pizzastore-postgres
+
+  pizzastore-ui:
+    build: ./
+    container_name: pizzastore-ui
+    ports:
+      - 3000:3000
+    links:
+      - pizzastore-app
+
+
+volumes:
+  pizzastore-data:
